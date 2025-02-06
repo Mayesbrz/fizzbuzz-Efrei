@@ -53,5 +53,5 @@ jobs:
           cd "$TEMP_DIR"
           docker build -t fizzbuzz-app .
 
-      - name: Run tests inside Docker
-        run: docker run --rm fizzbuzz-app python -m unittest discover -s tests
+      - name: Run test inside Docker
+        run: docker run --rm fizzbuzz-app python -m unittest discover -s test
