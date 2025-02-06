@@ -1,4 +1,4 @@
-name: Python Tests, Coverage, and Linting
+name: Python Tests, Coverage, and Docker Integration
 
 on:
   push:
@@ -41,15 +41,12 @@ jobs:
           slug: Mayesbrz/fizzbuzz-Efrei
 
       - name: Check code style with flake8
-        run: flake8 main.py test/test_fizzbuzz.py
-
-      - name: Checkout repository
-        uses: actions/checkout@v3
+        run: flake8 main.py tests/test_fizzbuzz.py
 
       - name: Set up Docker
         run: docker --version
 
-      - name: Build Docker image in temporary directory
+      - name: Build Docker image
         run: |
           TEMP_DIR=$(mktemp -d)
           cp -r . "$TEMP_DIR"
@@ -57,4 +54,4 @@ jobs:
           docker build -t fizzbuzz-app .
 
       - name: Run tests inside Docker
-        run: docker run --rm fizzbuzz-app
+        run: docker run --rm fizzbuzz-app python -m unittest discover -s tests
