@@ -21,7 +21,7 @@ class TestFizzBuzz(unittest.TestCase):
         self.assertEqual(fizzbuzz(100)[55], "Buzz")
 
     def test_multiple_de_3_et_5(self):
-        self.assertEqual(fizzbuzz(100)[50], "FizzBuzz")
+        self.assertEqual(fizzbuzz(100)[50], "Fizzbuzz")
         self.assertEqual(fizzbuzz(100)[56], "FizzBuzz")
 
     def test_non_multiple(self):
